@@ -48,6 +48,15 @@
     group={{pg_wale_user}}
     path={{pg_wale_env_folder}}
 
+- name: create env file for AWS_REGION
+  sudo: true
+  template:
+    src: AWS_REGION.j2
+    dest: "{{ pg_wale_env_folder }}/AWS_REGION"
+    owner: "{{ pg_wale_user }}"
+    group: "{{ pg_wale_user }}"
+    mode: 0640
+
 - name: create env file for AWS_SECRET_ACCESS_KEY
   sudo: true
   template: >

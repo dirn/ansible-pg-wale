@@ -1,6 +1,7 @@
 pg_wale_access_key_id: foo-access-key-id
 pg_wale_secret_access_key: foo-secret-access-key
 pg_wale_s3_prefix: s3://some-bucket/directory/or/whatever
+pg_wale_region: us-east-1
 pg_wale_version: HEAD
 pg_wale_repo: git@github.com:wal-e/wal-e.git
 pg_wale_pg_directory: /mnt/postgresql

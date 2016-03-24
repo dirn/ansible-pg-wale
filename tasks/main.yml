@@ -10,26 +10,11 @@
     - pv
     - daemontools
 
-- name: clone wal-e tool
-  sudo: true
-  git: >
-    repo={{pg_wale_repo}}
-    dest=/tmp/wal-e
-    version={{pg_wale_version}}
-    force=yes
-    accept_hostkey=yes
-
 - name: install wal-e
   sudo: true
-  command: python setup.py install
-  args:
-    chdir: /tmp/wal-e
-
-- name: remove the install files
-  sudo: true
-  file: >
-    state=absent
-    path=/tmp/wal-e
+  pip:
+    name: wal-e
+    state: latest
 
 - name: create daily base backup
   sudo: true

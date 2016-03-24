@@ -16,6 +16,12 @@
     name: wal-e
     state: latest
 
+- name: create backup directory
+  sudo: true
+  file:
+    path: "{{ pg_wale_pg_directory }}"
+    state: directory
+
 - name: create daily base backup
   sudo: true
   cron: >

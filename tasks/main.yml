@@ -37,8 +37,10 @@
     line="archive_command = '/usr/bin/envdir {{pg_wale_env_folder}} {{pg_wale_bin}} -k {{pg_wale_access_key_id}} --s3-prefix={{pg_wale_s3_prefix}} wal-push %p'"
     regexp='archive_command =.*$'
 
-#- name: reload postgres configuration
-#  command: "psql 'user={{pg_wale_user}} host=0.0.0.0' -c 'SELECT pg_reload_conf();'"
+- name: reload postgres configuration
+  become: yes
+  become_user: "{{ pg_wale_user }}"
+  command: "psql -c 'SELECT pg_reload_conf();'"
 
 - name: create env directory
   sudo: true
